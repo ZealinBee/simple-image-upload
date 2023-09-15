@@ -29,6 +29,7 @@ async function fetchImages() {
   try {
     const response = await fetch("http://4.245.244.225:3000/images");
     const images = await response.json();
+    imagesContainer.innerHTML = "";
     console.log(images)
     let index = 0;
     images.forEach((image) => {
