@@ -9,7 +9,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   formData.append("myFile", document.querySelector("#myFile").files[0]);
   console.log(formData);
   try {
-    const response = await fetch("http://4.245.244.225/upload", {
+    const response = await fetch("http://4.245.244.225:3000/upload", {
       method: "POST",
       body: formData,
     });
@@ -27,7 +27,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
 async function fetchImages() {
   try {
-    const response = await fetch("http://4.245.244.225/images");
+    const response = await fetch("http://4.245.244.225:3000/images");
     const images = await response.json();
     console.log(images)
     let index = 0;
