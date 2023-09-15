@@ -9,10 +9,15 @@ const fs = require("fs");
 
 const upload = multer({ dest: "uploads/" });
 const azureStorage = require("azure-storage");
-const { BlobServiceClient } = require("@azure/storage-blob");
 const blobService = azureStorage.createBlobService(
   "DefaultEndpointsProtocol=https;AccountName=zealinbee;AccountKey=jrplFdWzhQpmWMr1hGyWLz3hj6Y1JB2nT8crAwkb3EW0IAHj4cYIS+9TQk/xtU120EXuvKeIJT9S+AStKBy3NA==;EndpointSuffix=core.windows.net"
 );
+
+// i will do the env thingy later
+
+app.get("/", (req, res) => {
+  res.send("Hi, this is just a test for my image app, the back end should be working!");
+});
 
 app.post("/upload", upload.single("myFile"), function (req, res, next) {
   console.log(req.file);
@@ -43,22 +48,22 @@ app.post("/upload", upload.single("myFile"), function (req, res, next) {
 });
 
 app.get("/images", async (req, res) => {
-    try {
-        const images = []
-        blobService.listBlobsSegmented("images", null, (err, data) => {
-            if (err) {
-                console.error(err);
-            } else {
-                data.entries.forEach((blob) => {
-                    const url = blobService.getUrl("images", blob.name);
-                    images.push(url)
-                });
-                res.json(images);
-            }
-        })
-    }catch {
-        console.error("Error fetching images");
-    }
+  try {
+    const images = [];
+    blobService.listBlobsSegmented("images", null, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        data.entries.forEach((blob) => {
+          const url = blobService.getUrl("images", blob.name);
+          images.push(url);
+        });
+        res.json(images);
+      }
+    });
+  } catch {
+    console.error("Error fetching images");
+  }
 });
 
 const corsOptions = {
