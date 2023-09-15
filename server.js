@@ -67,7 +67,7 @@ app.get("/images", async (req, res) => {
 });
 
 const corsOptions = {
-  origin: "http://127.0.0.1:5500",
+  origin: "http://4.245.244.225",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
