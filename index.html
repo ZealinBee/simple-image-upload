@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple image uploader</title>
+    <script src="client.js" defer></script>
+</head>
+<body>
+    <style>
+        img {
+            width:300px;
+            height:300px;
+            object-fit: cover;
+            margin:1rem;
+            border:2px black solid;
+        }
+    </style>
+    <h1>Upload an image:</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" id="myFile" name="myFile">
+        <input type="submit" value="upload image">
+    </form>
+    <h1>Images:</h1>
+    <ul class="images">
+    </ul>
+</body> 
+</html>
