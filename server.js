@@ -67,10 +67,10 @@ app.get("/images", async (req, res) => {
 });
 
 const corsOptions = {
-  origin: "http://4.245.244.225",
+  origin: "http://98.71.53.99/",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 app.use(cors(corsOptions));
 
-app.listen(3000, () => console.log("Server listening on port 3000."));
+app.listen(8080, () => console.log("Server listening on port 8080."));
